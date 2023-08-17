@@ -4,9 +4,10 @@ const ContextApi = createContext();
 
 const ContextProvider = ({ children }) => {
   const [isLogin, setIsLogin] = useState(false);
+  const [products, setProducts] = useState([]);
 
   return (
-    <ContextApi.Provider value={{ isLogin, setIsLogin }}>
+    <ContextApi.Provider value={{ isLogin, setIsLogin ,products, setProducts}}>
       {children}
     </ContextApi.Provider>
   );
