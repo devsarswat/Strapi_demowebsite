@@ -4,11 +4,35 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { ContextApi } from "../Routs/ContextApi";
 import Config from "../Config";
+import { FaGoogle, FaGithub } from "react-icons/fa";
+
 const Login = () => {
   const initialFormData = { identifier: "", password: "" };
   const [form, setForm] = useState(initialFormData);
   const { setIsLogin } = useContext(ContextApi);
   const navigate = useNavigate();
+
+  const handleGoogleLogin = async () => {
+    try {
+      const response = await axios.get("http://localhost:1337/api/connect/google");
+      console.log("Google login success:", response.data);
+      setIsLogin(true);
+      navigate("/");
+    } catch (error) {
+      console.error("Google login failure:", error);
+    }
+  };
+
+  const handleGitHubLogin = async () => {
+    try {
+      const response = await axios.get("http://localhost:1337/connect/github");
+      console.log("GitHub login success:", response.data);
+      setIsLogin(true);
+      navigate("/");
+    } catch (error) {
+      console.error("GitHub login failure:", error);
+    }
+  };
 
   const handleValue = (e) => {
     const { name, value } = e.target;
@@ -59,6 +83,27 @@ const Login = () => {
           onClick={handleLogin}
         >
           Login
+        </Button>
+        {/* Google Login */}
+        <Button
+          variant="contained"
+          fullWidth
+          style={{ backgroundColor: "#DB4437", marginTop: "10px" }}
+          startIcon={<FaGoogle />}
+          onClick={handleGoogleLogin}
+        >
+          Login with Google
+        </Button>
+
+        {/* GitHub Login */}
+        <Button
+          variant="contained"
+          fullWidth
+          style={{ backgroundColor: "#333", marginTop: "10px" }}
+          startIcon={<FaGithub />}
+          onClick={handleGitHubLogin}
+        >
+          Login with GitHub
         </Button>
         <Typography variant="body1" className="register-link">
           Don't have an account?{" "}
