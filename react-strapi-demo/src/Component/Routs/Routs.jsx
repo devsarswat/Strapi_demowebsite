@@ -5,6 +5,9 @@ import Registration from '../Registration/Registration'
 import Home from '../Home/Home';
 import ProductCard from '../product/ProductCard';
 import { ContextApi } from './ContextApi'
+import ProductInfo from '../product/ProductInfo';
+import Cart from '../cart/Cart';
+import Order from '../Order/Order';
 
 
 const Routs = () => {
@@ -17,6 +20,9 @@ const Routs = () => {
       <Route path='/signin' element={<Registration/>}/>
       <Route path='/*' element={<Home/>}/>
       <Route path='/' element={<PrivateRoute element={<Home/>}/>}/>
+      <Route path='/productinfo' element={<ProductInfo/>}/>
+      <Route path='/cart' element={<Cart/>}/>
+      <Route path='/order' element={<Order/>}/>
       </Routes>
    
   )

@@ -38,15 +38,13 @@
     "discount": {
       "type": "integer"
     },
-    "image": {
-      "type": "text"
-    },
     "image_url": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
     }
   }
 }

@@ -4,7 +4,8 @@
   "info": {
     "singularName": "cart",
     "pluralName": "carts",
-    "displayName": "cart"
+    "displayName": "cart",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -15,21 +16,35 @@
       "type": "string",
       "required": true
     },
+    "description": {
+      "type": "text"
+    },
+    "origin": {
+      "type": "string"
+    },
+    "strength": {
+      "type": "enumeration",
+      "enum": [
+        "Light",
+        "Medium",
+        "Strong"
+      ],
+      "required": true
+    },
     "price": {
       "type": "integer",
       "required": true
     },
-    "username": {
-      "type": "string",
-      "required": true
+    "image_url": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
     },
-    "email": {
-      "type": "email",
-      "required": true
-    },
-    "orderdate": {
-      "type": "date",
-      "required": true
+    "discount": {
+      "type": "integer"
     }
   }
 }
