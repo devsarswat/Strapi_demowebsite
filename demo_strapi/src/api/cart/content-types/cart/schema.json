@@ -45,6 +45,9 @@
     },
     "discount": {
       "type": "integer"
+    },
+    "Userid": {
+      "type": "integer"
     }
   }
 }

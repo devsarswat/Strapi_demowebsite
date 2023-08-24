@@ -9,7 +9,7 @@ import { FaGoogle, FaGithub } from "react-icons/fa";
 const Login = () => {
   const initialFormData = { identifier: "", password: "" };
   const [form, setForm] = useState(initialFormData);
-  const { setIsLogin } = useContext(ContextApi);
+  const { setIsLogin ,setUser} = useContext(ContextApi);
   const navigate = useNavigate();
 
   const handleGoogleLogin = async () => {
@@ -43,9 +43,11 @@ const Login = () => {
     console.log("Logged in with:", form.identifier, form.password);
     axios
       .post(Config.apikeylogin, form)
-      .then(() => {
-        console.log("login success");
-        setIsLogin(true);
+      .then((res) => {
+        console.log("login success",res.data);
+        setUser(res.data)
+        localStorage.setItem("id",res.data.user.id)
+        setIsLogin(res.data.user.id);
         navigate("/");
       })
       .catch((error) => console.error(error));

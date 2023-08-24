@@ -4,10 +4,9 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import Config from '../Config';
-// import { ContextApi } from '../Routs/ContextApi';
 
 const Order = () => {
-  const [ products, setProducts ] = useState([]);
+  const [orders, setOrders] = useState([]);
 
   useEffect(() => {
     axios
@@ -17,33 +16,50 @@ const Order = () => {
         },
       })
       .then((response) => {
-        setProducts(response.data.data);
+        setOrders(response.data.data);
       })
       .catch((error) => {
-        console.error('Error fetching products:', error);
+        console.error('Error fetching orders:', error);
       });
-  }, [setProducts]);
+  }, []);
 
   return (
     <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '20px' }}>
-      {products.map((product) => (
-        <Card key={product.id} sx={{ width: 345 }}>
+      {orders.map((order) => (
+        <Card key={order.id} sx={{ width: 345 }}>
           <CardContent>
             <Typography gutterBottom variant="h5" component="div">
-              {product.attributes.name}
+              Order ID: {order.attributes.orderid}
             </Typography>
             <Typography variant="body2" color="text.secondary">
-              {product.attributes.description}
+              Order Date: {new Date(order.attributes.createdAt).toLocaleDateString()}
             </Typography>
             <Typography variant="body2" color="text.secondary">
-              Origin: {product.attributes.origin}
+              Order Status: {order.attributes.status}
             </Typography>
             <Typography variant="body2" color="text.secondary">
-              Strength: {product.attributes.strength}
+              Total Amount: ₹{order.attributes.amount}
             </Typography>
             <Typography variant="body2" color="text.secondary">
-              Price: ₹ {product.attributes.price}
+              Products:
             </Typography>
+            <div>
+              {order.attributes.products.map((product,index) => (
+                <Card key={index} sx={{ marginTop: '10px', padding: '10px' }}>
+                  <CardContent>
+                    <Typography variant="body2" color="text.secondary">
+                      Product: {product.productName}
+                    </Typography>
+                    <Typography variant="body2" color="text.secondary">
+                      Price: ₹{product.price}
+                    </Typography>
+                    <Typography variant="body2" color="text.secondary">
+                      Quantity: {product.quantity}
+                    </Typography>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
           </CardContent>
         </Card>
       ))}
@@ -52,3 +68,4 @@ const Order = () => {
 };
 
 export default Order;
+
