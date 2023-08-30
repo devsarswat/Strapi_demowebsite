@@ -4,7 +4,8 @@
   "info": {
     "singularName": "order",
     "pluralName": "orders",
-    "displayName": "order"
+    "displayName": "order",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -35,7 +36,7 @@
       "required": true
     },
     "transactionid": {
-      "type": "string"
+      "type": "text"
     },
     "amount": {
       "type": "integer",
@@ -44,6 +45,12 @@
     "status": {
       "type": "string",
       "required": true
+    },
+    "full_name": {
+      "type": "string"
+    },
+    "mobile_number": {
+      "type": "biginteger"
     }
   }
 }

@@ -44,8 +44,8 @@ const Login = () => {
     axios
       .post(Config.apikeylogin, form)
       .then((res) => {
-        console.log("login success",res.data);
-        setUser(res.data)
+        setUser(res.data.user)
+        localStorage.setItem("SessionId",res.data.jwt)
         localStorage.setItem("id",res.data.user.id)
         setIsLogin(res.data.user.id);
         navigate("/");

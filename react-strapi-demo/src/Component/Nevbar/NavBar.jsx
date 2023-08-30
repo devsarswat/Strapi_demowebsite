@@ -31,7 +31,7 @@ const NavBar = () => {
     }, []);
   
     const handlelogot = () => {
-      setIsLogin(localStorage.removeItem("id"));
+      setIsLogin(localStorage.clear());
     };
 
   return (

@@ -11,10 +11,11 @@ const ContextProvider = ({ children }) => {
   const [products, setProducts] = useState([]);
   const [selectproduct, setselectproduct]=useState(null)
   const [user, setUser]=useState(null)
+  const Token=localStorage.getItem("SessionId")
   
 
   return (
-    <ContextApi.Provider value={{ isLogin, setIsLogin ,products, setProducts,selectproduct, setselectproduct,user, setUser}}>
+    <ContextApi.Provider value={{ isLogin, setIsLogin ,products, setProducts,selectproduct, setselectproduct,user, setUser,Token}}>
       {children}
     </ContextApi.Provider>
   );

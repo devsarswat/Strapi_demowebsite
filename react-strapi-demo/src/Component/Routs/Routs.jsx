@@ -8,11 +8,14 @@ import { ContextApi } from './ContextApi'
 import ProductInfo from '../product/ProductInfo';
 import Cart from '../cart/Cart';
 import Order from '../Order/Order';
+import Userdata from '../Userdata';
+import CheckoutPage from '../CheckoutPage/CheckoutPage';
 
 
 const Routs = () => {
   
   return (
+    <>
       <Routes>
       {/* <Route path='/' element={<Home/>}/> */}
       <Route path='/product' element={<ProductCard/>}/>
@@ -23,8 +26,10 @@ const Routs = () => {
       <Route path='/productinfo' element={<ProductInfo/>}/>
       <Route path='/cart' element={<Cart/>}/>
       <Route path='/order' element={<Order/>}/>
+      <Route path='/checkout' element={<CheckoutPage/>}/>
       </Routes>
-   
+   <Userdata/>
+   </>
   )
 }
 const PrivateRoute=({element})=>{

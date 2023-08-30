@@ -48,6 +48,9 @@
     },
     "Userid": {
       "type": "integer"
+    },
+    "quantity": {
+      "type": "integer"
     }
   }
 }
